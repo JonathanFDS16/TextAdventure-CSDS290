@@ -27,7 +27,7 @@
         msg ("Everybody is busy with Sally.")
       }
       else {
-        msg ("Welcome to Class, not that it needs any introducing. The dilapidated English posters take up half of the decorations and the writing on the desks is enough to get any student at least a B on each test. The one saving grace, those unfortunate enough to be in this hellhole with me.")
+        msg ("Welcome to Class, not that it needs any introducing. The dilapidated English posters take up half of the decorations and the writing on the desks is enough to get any student at least a B on each test. The one saving grace, those unfortunate enough to be in this hellhole with me. I need to find a way to escape this place, it might be possible that my colleagues can help me with that.")
       }
     </description>
     <object name="John">
@@ -54,7 +54,7 @@
       <listchildren />
       <hidechildren />
       <listchildrenprefix>She has her iconic</listchildrenprefix>
-      <look>Sally, who always tells on the other students for cheating or trying to escape from class. She is currently eating a lot of candy, which was rewarded to her by the teacher for telling on others.</look>
+      <look><![CDATA[Sally, who always tells on the other students for cheating or trying to escape from class. She is currently eating a lot of candy, which was rewarded to her by the teacher for telling on others.<br/>Weird enough she was a backpack halfway opened that cointains something shiny sticking out.]]></look>
       <Allergy type="boolean">false</Allergy>
       <speak type="script">
         if (Sally.Allergy = false) {
@@ -68,16 +68,16 @@
       <give type="scriptdictionary">
         <item key="Butterfinger Bar">
           msg ("You place the peanut bar inside the backpack and retreat back to a safe distance. Soon after, Sally eats the peanut bar and has an allergic reaction. The teacher rushes over, and is now completely distracted.")
-          MoveObject (Butterfinger Bar, Sallys Bag)
+          MoveObject (Butterfinger Bar, Sallys Backpack)
           set (Sally, "Allergy", true)
           UnlockExit (Classroom Door)
           SetObjectFlagOn (Classroom, "Allergy")
         </item>
       </give>
-      <object name="Sallys Bag">
+      <object name="Sallys Backpack">
         <inherit name="editor_object" />
         <inherit name="container_open" />
-        <alias>Semi-Opened Pink Bag</alias>
+        <alias>Backpack</alias>
         <usedefaultprefix type="boolean">false</usedefaultprefix>
         <feature_container />
         <open type="boolean">false</open>
@@ -85,7 +85,7 @@
         <transparent type="boolean">false</transparent>
         <hidechildren />
         <listchildren type="boolean">false</listchildren>
-        <look>You sneak up to the backpack and take a look inside. Aside from the stash of {object:Candy}, and a {object:Binder}, there’s also a {object:Laminated Peanut Allergy Warning} stating that Sally is allergic to peanuts. </look>
+        <look>You sneak up to the backpack and take a look inside. Aside from the stash of {object:Candy}, and a {object:Binder}, there’s also a {object:Laminated Allergy Warning}. </look>
         <displayverbs type="stringlist">
           <value>Look at</value>
         </displayverbs>
@@ -103,24 +103,35 @@
           </item>
         </put>
         <feature_usegive />
+        <scenery />
         <give type="scriptdictionary">
           <item key="Butterfinger Bar">
             msg ("You place the peanut bar inside the backpack and retreat back to a safe distance. Soon after, Sally eats the peanut bar and has an allergic reaction. The teacher rushes over, and is now completely distracted.")
-            MoveObject (Butterfinger Bar, Sallys Bag)
+            MoveObject (Butterfinger Bar, Sallys Backpack)
             set (Sally, "Allergy", true)
           </item>
         </give>
-        <object name="Laminated Peanut Allergy Warning">
+        <object name="Laminated Allergy Warning">
           <inherit name="editor_object" />
           <alias>Plastic Card</alias>
-          <look>{img:Allergy Card.png}</look>
+          <look>The plastic cards shows that she allergic to almost everything, including peanuts.</look>
+          <displayverbs type="stringlist">
+            <value>Look at</value>
+          </displayverbs>
         </object>
         <object name="Binder">
           <inherit name="editor_object" />
-          <look type="string"></look>
+          <look>A binder with a lot of pinky stickers of Hello Kitty. </look>
+          <displayverbs type="stringlist">
+            <value>Look at</value>
+          </displayverbs>
         </object>
         <object name="Candy">
           <inherit name="editor_object" />
+          <look>A bunch of candy, including chocolates, jelly beans, and others.</look>
+          <displayverbs type="stringlist">
+            <value>Look at</value>
+          </displayverbs>
         </object>
       </object>
     </object>
@@ -153,12 +164,17 @@
       <look>Your desk. There’s nothing really interesting on the top of the desk. Just a bunch of scribbled notes, and some obscene drawings that I don’t need to get into much detail. While inspecting the table, you look under it to find a {object:Wad of Gum} and a {object:Butterfinger Bar}.</look>
       <object name="Wad of Gum">
         <inherit name="editor_object" />
+        <look>Just a bunch of gum that someone from the last period left here. It's too disgusting to be taken.</look>
+        <inventoryverbs type="stringlist" />
+        <displayverbs type="stringlist">
+          <value>Look at</value>
+        </displayverbs>
       </object>
       <object name="Butterfinger Bar">
         <inherit name="editor_object" />
         <take />
-        <look>Oh this looks so yummy</look>
-        <takemsg>Don't mind if I do</takemsg>
+        <look><![CDATA[<i>Butterfinger</i><br/>230 Calories<br/>30g of Sugar<br/><br/><b>Attention: Contain nuts</b>]]></look>
+        <takemsg>You took the Butterfinger, it is in your inventory now.</takemsg>
         <inventoryverbs type="stringlist">
           <value>Give</value>
         </inventoryverbs>
@@ -177,7 +193,7 @@
       <locked />
       <runscript type="boolean">false</runscript>
       <lockmessage>Leaving with the teacher still lecturing is probably not a good idea</lockmessage>
-      <message>The exit to the Classroom. The teacher seems really busy with Sally, now would be a good time to escape the Classroom.</message>
+      <message>The chaos in the classroom was the best opportunity for an escape. You stood up and left as soon as nobody was looking.</message>
     </exit>
     <object name="player">
       <inherit name="editor_object" />
@@ -189,7 +205,14 @@
       <prefix type="string"></prefix>
       <suffix type="string"></suffix>
       <alias>Ms Harrison</alias>
-      <look>The teacher is writing on the blackboard, but trying to leave the Classroom right now would be a death sentence. I need a way to properly distract them.</look>
+      <look type="script">
+        if (Sally.Allergy = false) {
+          msg ("The teacher is writing on the blackboard, but trying to leave the Classroom right now would be a death sentence. I need a way to properly distract them.")
+        }
+        else {
+          msg ("Ms. Harrison is really busy with Sally.")
+        }
+      </look>
     </object>
     <object name="Window">
       <inherit name="editor_object" />
