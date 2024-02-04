@@ -1,0 +1,22 @@
+<asl version="580">
+
+  <include ref="English.aslx"/>
+  <include ref="Core.aslx"/>
+
+  <game name="Test">
+    <gameid>b8394929-0cbe-46e2-bfac-22e513f62b22</gameid>
+    <version>1.0</version>
+    <firstpublished>2024</firstpublished>
+  </game>
+
+  <object name="room">
+    <inherit name="editor_room" />
+    <isroom />
+
+    <object name="player">
+      <inherit name="editor_object" />
+      <inherit name="editor_player" />
+    </object>
+  </object>
+
+</asl>
