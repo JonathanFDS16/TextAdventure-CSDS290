@@ -19,11 +19,11 @@
     <attr name="autodescription_youcansee" type="int">2</attr>
     <showdescriptiononenter />
     <gridmap type="boolean">false</gridmap>
-    <pov type="object">player</pov>
     <defaultfontsize type="int">14</defaultfontsize>
     <defaultfont>'Palatino Linotype', 'Book Antiqua', Palatino, serif</defaultfont>
     <setbackgroundopacity />
     <backgroundopacity type="double">0.8</backgroundopacity>
+    <pov type="object">player</pov>
   </game>
   <object name="Classroom">
     <inherit name="editor_room" />
@@ -92,13 +92,20 @@
         <transparent type="boolean">false</transparent>
         <hidechildren />
         <listchildren type="boolean">false</listchildren>
-        <look>You sneak up to the backpack and take a look inside. Aside from the stash of Candy, and a Binder, there’s also an interesting Plastic Card. </look>
+        <look><![CDATA[You sneak up to the backpack and take a look inside. Aside from the stash of Candy, and a Binder, there’s also an interesting Plastic Card. <br/>You can see {object:Candy}, {object:Binder}, and {object:Laminated Allergy Warning}.]]></look>
         <displayverbs type="stringlist">
           <value>Look at</value>
         </displayverbs>
         <contentsprefix type="string"></contentsprefix>
         <feature_usegive />
         <scenery type="boolean">false</scenery>
+        <alt type="stringlist">
+          <value>bag</value>
+          <value>Sally's backpack</value>
+          <value>sally backpack</value>
+          <value>sally's bag</value>
+          <value>backpack</value>
+        </alt>
         <addscript type="script">
         </addscript>
         <put type="scriptdictionary">
@@ -118,13 +125,6 @@
             set (Sally, "Allergy", true)
           </item>
         </give>
-        <alt type="stringlist">
-          <value>bag</value>
-          <value>Sally's backpack</value>
-          <value>sally backpack</value>
-          <value>sally's bag</value>
-          <value>backpack</value>
-        </alt>
         <object name="Laminated Allergy Warning">
           <inherit name="editor_object" />
           <alias>Plastic Card</alias>
@@ -213,16 +213,16 @@
         <givesingle />
         <scenery type="boolean">false</scenery>
         <alias>Butterfinger Bar</alias>
-        <selfuseanything type="script">
-        </selfuseanything>
-        <givetoanything type="script">
-        </givetoanything>
         <alt type="stringlist">
           <value>candy</value>
           <value>bar</value>
           <value>butterfinger</value>
           <value>chocolate</value>
         </alt>
+        <selfuseanything type="script">
+        </selfuseanything>
+        <givetoanything type="script">
+        </givetoanything>
       </object>
     </object>
     <exit name="Classroom Door" alias="Classroom Door" to="Hall">
@@ -230,7 +230,7 @@
       <runscript type="boolean">false</runscript>
       <lockmessage>Leaving with the teacher still lecturing is probably not a good idea</lockmessage>
       <message>The chaos in the classroom was the best opportunity for an escape. You stood up and left as soon as nobody was looking.</message>
-      <scenery />
+      <scenery type="boolean">false</scenery>
     </exit>
     <object name="player">
       <inherit name="editor_object" />
@@ -247,14 +247,6 @@
         <value>Look at</value>
       </displayverbs>
       <scenery type="boolean">false</scenery>
-      <look type="script">
-        if (Sally.Allergy = false) {
-          msg ("The teacher is writing on the blackboard, but trying to leave the Classroom right now would be a death sentence. I need a way to properly distract them.")
-        }
-        else {
-          msg ("Ms. Harrison is really busy with Sally.")
-        }
-      </look>
       <alt type="stringlist">
         <value>harrison</value>
         <value>teacher</value>
@@ -263,6 +255,14 @@
         <value>professor</value>
         <value>ms. harrison</value>
       </alt>
+      <look type="script">
+        if (Sally.Allergy = false) {
+          msg ("The teacher is writing on the blackboard, but trying to leave the Classroom right now would be a death sentence. I need a way to properly distract them.")
+        }
+        else {
+          msg ("Ms. Harrison is really busy with Sally.")
+        }
+      </look>
     </object>
     <object name="Window">
       <inherit name="editor_object" />
@@ -272,6 +272,13 @@
       <displayverbs type="stringlist">
         <value>Look at</value>
       </displayverbs>
+    </object>
+    <object name="Help">
+      <inherit name="editor_object" />
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
+      <look><![CDATA[Possible verbs:<br/>Look at<br/>Speak to<br/>Give ... to ...<br/>Use ....<br/>Go to ....]]></look>
     </object>
   </object>
   <object name="Hall">
@@ -327,8 +334,17 @@
         <value>Look at</value>
       </displayverbs>
       <useindividualverblist type="boolean">false</useindividualverblist>
-      <scenery type="boolean">false</scenery>
+      <scenery />
       <feature_usegive />
+      <alt type="stringlist">
+        <value>number</value>
+        <value>code</value>
+        <value>4 digit number</value>
+        <value>numbers</value>
+      </alt>
+      <inventoryverbs type="stringlist">
+        <value>Use</value>
+      </inventoryverbs>
       <look type="script">
         msg ("“The code is 0290. Maybe it will be useful somewhere?” The code was memorized by your not so smart brain.")
         AddToInventory (DigitNumber)
@@ -342,15 +358,6 @@
           msg ("You are far from the door.")
         }
       </use>
-      <alt type="stringlist">
-        <value>number</value>
-        <value>code</value>
-        <value>4 digit number</value>
-        <value>numbers</value>
-      </alt>
-      <inventoryverbs type="stringlist">
-        <value>Use</value>
-      </inventoryverbs>
     </object>
   </object>
   <object name="Janitors Closet">
@@ -373,13 +380,13 @@
       <useindividualverblist type="boolean">false</useindividualverblist>
       <usestandardverblist type="boolean">false</usestandardverblist>
       <open />
-      <openscript type="script">
-        msg ("“You open the toolbox and see a screwdriver”")
-      </openscript>
       <alt type="stringlist">
         <value>box</value>
         <value>tool</value>
       </alt>
+      <openscript type="script">
+        msg ("“You open the toolbox and see a screwdriver”")
+      </openscript>
     </object>
     <object name="Screwdriver">
       <inherit name="editor_object" />
@@ -393,6 +400,9 @@
       <drop type="boolean">false</drop>
       <givesingle type="boolean">false</givesingle>
       <usemenuprompt>Use where?</usemenuprompt>
+      <inventoryverbs type="stringlist">
+        <value>Use</value>
+      </inventoryverbs>
       <use type="script">
         if (game.pov.parent = Hall) {
           UnlockExit (Vent Escape)
@@ -402,9 +412,6 @@
           msg ("You are not close to the vent.")
         }
       </use>
-      <inventoryverbs type="stringlist">
-        <value>Use</value>
-      </inventoryverbs>
     </object>
   </object>
   <verb>
