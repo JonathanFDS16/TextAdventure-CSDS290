@@ -4,3 +4,24 @@
 [0204/191948:ERROR:cache_creator.cc(132)] Unable to create cache
 [0204/191948:ERROR:shader_disk_cache.cc(588)] Shader Cache Creation failed: -2
 [0204/191954:WARNING:message_in_transit_queue.cc(18)] Destroying nonempty message queue
+[0204/200626:ERROR:renderer_main.cc(207)] Running without renderer sandbox
+[0204/221831:WARNING:message_in_transit_queue.cc(18)] Destroying nonempty message queue
+[0204/221835:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[0204/221836:ERROR:renderer_main.cc(207)] Running without renderer sandbox
+[0204/221840:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[0204/221845:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[0204/221850:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[0204/221855:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[0204/221900:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[0204/221905:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[0204/221910:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[0204/221915:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[0204/221920:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[0204/221925:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[0204/221930:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[0204/221935:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[0204/221940:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[0204/221945:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[0204/221950:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[0204/221955:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[0204/221957:WARNING:message_in_transit_queue.cc(18)] Destroying nonempty message queue

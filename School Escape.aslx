@@ -18,8 +18,12 @@
     <autodisplayverbs />
     <attr name="autodescription_youcansee" type="int">2</attr>
     <showdescriptiononenter />
-    <pov type="object">player</pov>
     <gridmap type="boolean">false</gridmap>
+    <pov type="object">player</pov>
+    <defaultfontsize type="int">14</defaultfontsize>
+    <defaultfont>'Palatino Linotype', 'Book Antiqua', Palatino, serif</defaultfont>
+    <setbackgroundopacity />
+    <backgroundopacity type="double">0.8</backgroundopacity>
   </game>
   <object name="Classroom">
     <inherit name="editor_room" />
@@ -28,7 +32,7 @@
         msg ("Everybody is busy with Sally.")
       }
       else {
-        msg ("Welcome to Class, not that it needs any introducing. The dilapidated English posters take up half of the decorations and the writing on the desks is enough to get any student at least a B on each test. The one saving grace, those unfortunate enough to be in this hellhole with me. I need to find a way to escape this place, it might be possible that my colleagues can help me with that.<br/>In this game you can look at things or people, speak to them, and other simple actions. You have besides you: John, Paul, Sally, Mr. Harrison the teacher, and a cool window. The classroom door is close to the teacher’s desk and any plan to leave without permission will lead to detention.")
+        msg ("Welcome to Class, not that it needs any introducing. The dilapidated English posters take up half of the decorations and the writing on the desks is enough to get any student at least a B on each test. The one saving grace, those unfortunate enough to be in this hellhole with me. I need to find a way to escape this place, it might be possible that my colleagues can help me with that.<br/>In this game you can look at things or people, speak to them, and other simple actions. You have besides you: John, Paul, Sally, Ms. Harrison the teacher, a cool window, and your desk. The classroom door is close to the teacher’s desk and any plan to leave without permission will lead to detention.")
       }
     ]]></description>
     <object name="John">
@@ -38,6 +42,7 @@
       <displayverbs type="stringlist">
         <value>Look at</value>
       </displayverbs>
+      <scenery />
       <speak type="script">
         if (Sally.Allergy = false) {
           msg ("\"Escape? Well, you might want to find some way to distract the teacher first. Maybe you could handle that goody two shoes Sally\"")
@@ -46,7 +51,6 @@
           msg ("John is busy helping the teacher")
         }
       </speak>
-      <scenery />
     </object>
     <object name="Sally">
       <inherit name="editor_object" />
@@ -59,6 +63,7 @@
       <look><![CDATA[Sally, who always tells on the other students for cheating or trying to escape from class. She is currently eating a lot of candy, which was rewarded to her by the teacher for telling on others.<br/>Weird enough she was a backpack halfway opened that cointains something shiny sticking out.]]></look>
       <Allergy type="boolean">false</Allergy>
       <feature_usegive />
+      <scenery />
       <speak type="script">
         if (Sally.Allergy = false) {
           msg ("\"Why would I want to do that? If you try to do that I'll tell the teacher and you'll spend all of lunch in detention. *evil laugh*\"")
@@ -76,7 +81,6 @@
           SetObjectFlagOn (Classroom, "Allergy")
         </item>
       </give>
-      <scenery />
       <object name="Sallys Backpack">
         <inherit name="editor_object" />
         <inherit name="container_open" />
@@ -114,6 +118,13 @@
             set (Sally, "Allergy", true)
           </item>
         </give>
+        <alt type="stringlist">
+          <value>bag</value>
+          <value>Sally's backpack</value>
+          <value>sally backpack</value>
+          <value>sally's bag</value>
+          <value>backpack</value>
+        </alt>
         <object name="Laminated Allergy Warning">
           <inherit name="editor_object" />
           <alias>Plastic Card</alias>
@@ -142,6 +153,7 @@
       <inherit name="editor_object" />
       <inherit name="namedmale" />
       <look>Paul, the Class Clown. It’s a wonder that his last prank didn’t get him kicked out of class. Maybe he can help you escape? Paul is obviously not paying attention to what the teacher is saying. </look>
+      <scenery />
       <speak type="script">
         if (Sally.Allergy = false) {
           msg ("\"Sorry man, I don’t have any ideas on how you could escape. Maybe ask that John guy if you haven’t already heard he’s real smart.\"")
@@ -150,7 +162,6 @@
           msg ("Paul is busy with Sally and the teacher.")
         }
       </speak>
-      <scenery />
     </object>
     <object name="Desk">
       <inherit name="editor_object" />
@@ -167,6 +178,9 @@
       </displayverbs>
       <look>Your desk. There’s nothing really interesting on the top of the desk. Just a bunch of scribbled notes, and some obscene drawings that I don’t need to get into much detail. While inspecting the table, you look under it to find a Wad of Gum and a Butterfinger Bar.</look>
       <scenery />
+      <alt type="stringlist">
+        <value>table</value>
+      </alt>
       <object name="Wad of Gum">
         <inherit name="editor_object" />
         <look>Just a bunch of gum that someone from the last period left here. It's too disgusting to be taken.</look>
@@ -175,7 +189,11 @@
           <value>Look at</value>
         </displayverbs>
         <scenery />
-        <alias>gum</alias>
+        <alias>Wad of Gum</alias>
+        <alt type="stringlist">
+          <value>gum</value>
+          <value>trident</value>
+        </alt>
       </object>
       <object name="Butterfinger Bar">
         <inherit name="editor_object" />
@@ -190,12 +208,18 @@
         <givemenuprompt>To who do you want to give this delicious candy?</givemenuprompt>
         <use type="boolean">false</use>
         <givesingle />
+        <scenery />
+        <alias>Butterfinger Bar</alias>
         <selfuseanything type="script">
         </selfuseanything>
         <givetoanything type="script">
         </givetoanything>
-        <scenery />
-        <alias>candy</alias>
+        <alt type="stringlist">
+          <value>candy</value>
+          <value>bar</value>
+          <value>butterfinger</value>
+          <value>chocolate</value>
+        </alt>
       </object>
     </object>
     <exit name="Classroom Door" alias="Classroom Door" to="Hall">
@@ -219,6 +243,7 @@
       <displayverbs type="stringlist">
         <value>Look at</value>
       </displayverbs>
+      <scenery />
       <look type="script">
         if (Sally.Allergy = false) {
           msg ("The teacher is writing on the blackboard, but trying to leave the Classroom right now would be a death sentence. I need a way to properly distract them.")
@@ -227,7 +252,14 @@
           msg ("Ms. Harrison is really busy with Sally.")
         }
       </look>
-      <scenery />
+      <alt type="stringlist">
+        <value>harrison</value>
+        <value>teacher</value>
+        <value>ms.</value>
+        <value>ms</value>
+        <value>professor</value>
+        <value>ms. harrison</value>
+      </alt>
     </object>
     <object name="Window">
       <inherit name="editor_object" />
@@ -243,25 +275,25 @@
     <inherit name="editor_room" />
     <description>There are several doors along the sides of the hallway, one is the classroom door, but the other two that stands out are the door to the Janitor’s Room and the door to the Bathroom. There’s also a small vent on the side of the hallway which seems to lead outside of the school.</description>
     <exit alias="Classroom Door" to="Classroom">
-      <scenery />
+      <scenery type="boolean">false</scenery>
     </exit>
     <exit name="Janitor Exit" alias="Janitor's Door" to="Janitors Closet">
       <locked />
       <runscript type="boolean">false</runscript>
       <message>You type the code you have memorized, and...*beep*... A green light flashed in your eyes. The door is opened.</message>
+      <lockmessage>The Janitor's closet is locked behind a door with a digital lock. The door can be unlocked with a sort of code.</lockmessage>
+      <scenery type="boolean">false</scenery>
       <script type="script">
       </script>
-      <lockmessage>The Janitor's closet is locked behind a door with a digital lock. The door can be unlocked with a sort of code.</lockmessage>
-      <scenery />
     </exit>
     <exit alias="Bathroom Door" to="Bathroom">
-      <scenery />
+      <scenery type="boolean">false</scenery>
     </exit>
     <exit name="Vent Escape" alias="Vent" to="Vent">
       <locked />
       <runscript type="boolean">false</runscript>
       <lockmessage>A Vent that is attached to the wall with several screws. You can feel the outside breeze coming out of it. The grid is being held by 10 screws.</lockmessage>
-      <scenery />
+      <scenery type="boolean">false</scenery>
     </exit>
   </object>
   <object name="Bathroom">
@@ -279,6 +311,10 @@
       <drop type="boolean">false</drop>
       <look>Among many weird drawings and messages you see a 4 digit number, that weird enough, gives you the feeling that it could be a code for something.</look>
       <scenery />
+      <alt type="stringlist">
+        <value>side wall</value>
+        <value>wall</value>
+      </alt>
     </object>
     <object name="DigitNumber">
       <inherit name="editor_object" />
@@ -303,6 +339,12 @@
           msg ("You are far from the door.")
         }
       </use>
+      <alt type="stringlist">
+        <value>number</value>
+        <value>code</value>
+        <value>4 digit number</value>
+        <value>numbers</value>
+      </alt>
     </object>
   </object>
   <object name="Janitors Closet">
@@ -328,6 +370,10 @@
       <openscript type="script">
         msg ("“You open the toolbox and see a screwdriver”")
       </openscript>
+      <alt type="stringlist">
+        <value>box</value>
+        <value>tool</value>
+      </alt>
     </object>
     <object name="Screwdriver">
       <inherit name="editor_object" />
@@ -340,6 +386,7 @@
       <takemsg>You’ve picked up the screwdriver.”</takemsg>
       <drop type="boolean">false</drop>
       <givesingle type="boolean">false</givesingle>
+      <usemenuprompt>Use where?</usemenuprompt>
       <use type="script">
         if (game.pov.parent = Hall) {
           UnlockExit (Vent Escape)
@@ -349,7 +396,6 @@
           msg ("You are not close to the vent.")
         }
       </use>
-      <usemenuprompt>Use where?</usemenuprompt>
     </object>
   </object>
   <verb>
