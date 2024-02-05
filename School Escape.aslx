@@ -11,29 +11,33 @@
     <defaultforeground>White</defaultforeground>
     <defaultbackground>Black</defaultbackground>
     <defaultlinkforeground>White</defaultlinkforeground>
-    <turnoffcompass type="boolean">false</turnoffcompass>
+    <turnoffcompass />
     <panestheme>Midnight</panestheme>
     <turnoffplacesandobjects />
     <bordercolour>Chocolate</bordercolour>
-    <pov type="object">player</pov>
     <autodisplayverbs />
     <attr name="autodescription_youcansee" type="int">2</attr>
     <showdescriptiononenter />
+    <pov type="object">player</pov>
+    <gridmap type="boolean">false</gridmap>
   </game>
   <object name="Classroom">
     <inherit name="editor_room" />
-    <description type="script">
+    <description type="script"><![CDATA[
       if (GetBoolean(Classroom, "Allergy")) {
         msg ("Everybody is busy with Sally.")
       }
       else {
-        msg ("Welcome to Class, not that it needs any introducing. The dilapidated English posters take up half of the decorations and the writing on the desks is enough to get any student at least a B on each test. The one saving grace, those unfortunate enough to be in this hellhole with me. I need to find a way to escape this place, it might be possible that my colleagues can help me with that.")
+        msg ("Welcome to Class, not that it needs any introducing. The dilapidated English posters take up half of the decorations and the writing on the desks is enough to get any student at least a B on each test. The one saving grace, those unfortunate enough to be in this hellhole with me. I need to find a way to escape this place, it might be possible that my colleagues can help me with that.<br/>In this game you can look at things or people, speak to them, and other simple actions. You have besides you: John, Paul, Sally, Mr. Harrison the teacher, and a cool window. The classroom door is close to the teacher’s desk and any plan to leave without permission will lead to detention.")
       }
-    </description>
+    ]]></description>
     <object name="John">
       <inherit name="editor_object" />
       <inherit name="namedmale" />
       <look>Your friend John, probably the smartest person you’ve ever met. Maybe he has some advice on how to escape?</look>
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
       <speak type="script">
         if (Sally.Allergy = false) {
           msg ("\"Escape? Well, you might want to find some way to distract the teacher first. Maybe you could handle that goody two shoes Sally\"")
@@ -42,9 +46,7 @@
           msg ("John is busy helping the teacher")
         }
       </speak>
-      <displayverbs type="stringlist">
-        <value>Look at</value>
-      </displayverbs>
+      <scenery />
     </object>
     <object name="Sally">
       <inherit name="editor_object" />
@@ -56,6 +58,7 @@
       <listchildrenprefix>She has her iconic</listchildrenprefix>
       <look><![CDATA[Sally, who always tells on the other students for cheating or trying to escape from class. She is currently eating a lot of candy, which was rewarded to her by the teacher for telling on others.<br/>Weird enough she was a backpack halfway opened that cointains something shiny sticking out.]]></look>
       <Allergy type="boolean">false</Allergy>
+      <feature_usegive />
       <speak type="script">
         if (Sally.Allergy = false) {
           msg ("\"Why would I want to do that? If you try to do that I'll tell the teacher and you'll spend all of lunch in detention. *evil laugh*\"")
@@ -64,7 +67,6 @@
           msg ("Sally can’t speak right now")
         }
       </speak>
-      <feature_usegive />
       <give type="scriptdictionary">
         <item key="Butterfinger Bar">
           msg ("You place the peanut bar inside the backpack and retreat back to a safe distance. Soon after, Sally eats the peanut bar and has an allergic reaction. The teacher rushes over, and is now completely distracted.")
@@ -74,6 +76,7 @@
           SetObjectFlagOn (Classroom, "Allergy")
         </item>
       </give>
+      <scenery />
       <object name="Sallys Backpack">
         <inherit name="editor_object" />
         <inherit name="container_open" />
@@ -85,11 +88,13 @@
         <transparent type="boolean">false</transparent>
         <hidechildren />
         <listchildren type="boolean">false</listchildren>
-        <look>You sneak up to the backpack and take a look inside. Aside from the stash of {object:Candy}, and a {object:Binder}, there’s also a {object:Laminated Allergy Warning}. </look>
+        <look>You sneak up to the backpack and take a look inside. Aside from the stash of Candy, and a Binder, there’s also an interesting Plastic Card. </look>
         <displayverbs type="stringlist">
           <value>Look at</value>
         </displayverbs>
         <contentsprefix type="string"></contentsprefix>
+        <feature_usegive />
+        <scenery />
         <addscript type="script">
         </addscript>
         <put type="scriptdictionary">
@@ -102,8 +107,6 @@
             }
           </item>
         </put>
-        <feature_usegive />
-        <scenery />
         <give type="scriptdictionary">
           <item key="Butterfinger Bar">
             msg ("You place the peanut bar inside the backpack and retreat back to a safe distance. Soon after, Sally eats the peanut bar and has an allergic reaction. The teacher rushes over, and is now completely distracted.")
@@ -114,7 +117,7 @@
         <object name="Laminated Allergy Warning">
           <inherit name="editor_object" />
           <alias>Plastic Card</alias>
-          <look>The plastic cards shows that she allergic to almost everything, including peanuts.</look>
+          <look>The plastic card shows that she allergic to almost everything, including peanuts.</look>
           <displayverbs type="stringlist">
             <value>Look at</value>
           </displayverbs>
@@ -147,6 +150,7 @@
           msg ("Paul is busy with Sally and the teacher.")
         }
       </speak>
+      <scenery />
     </object>
     <object name="Desk">
       <inherit name="editor_object" />
@@ -161,7 +165,8 @@
       <displayverbs type="stringlist">
         <value>Look at</value>
       </displayverbs>
-      <look>Your desk. There’s nothing really interesting on the top of the desk. Just a bunch of scribbled notes, and some obscene drawings that I don’t need to get into much detail. While inspecting the table, you look under it to find a {object:Wad of Gum} and a {object:Butterfinger Bar}.</look>
+      <look>Your desk. There’s nothing really interesting on the top of the desk. Just a bunch of scribbled notes, and some obscene drawings that I don’t need to get into much detail. While inspecting the table, you look under it to find a Wad of Gum and a Butterfinger Bar.</look>
+      <scenery />
       <object name="Wad of Gum">
         <inherit name="editor_object" />
         <look>Just a bunch of gum that someone from the last period left here. It's too disgusting to be taken.</look>
@@ -169,24 +174,28 @@
         <displayverbs type="stringlist">
           <value>Look at</value>
         </displayverbs>
+        <scenery />
+        <alias>gum</alias>
       </object>
       <object name="Butterfinger Bar">
         <inherit name="editor_object" />
         <take />
-        <look><![CDATA[<i>Butterfinger</i><br/>230 Calories<br/>30g of Sugar<br/><br/><b>Attention: Contain nuts</b>]]></look>
+        <look><![CDATA[<i>Butterfinger</i><br/>230 Calories<br/>30g of Sugar<br/><b>Attention: Contain nuts</b>]]></look>
         <takemsg>You took the Butterfinger, it is in your inventory now.</takemsg>
         <inventoryverbs type="stringlist">
           <value>Give</value>
         </inventoryverbs>
         <feature_usegive />
         <drop type="boolean">false</drop>
+        <givemenuprompt>To who do you want to give this delicious candy?</givemenuprompt>
+        <use type="boolean">false</use>
+        <givesingle />
         <selfuseanything type="script">
         </selfuseanything>
         <givetoanything type="script">
         </givetoanything>
-        <givemenuprompt>To who do you want to give this delicious candy?</givemenuprompt>
-        <use type="boolean">false</use>
-        <givesingle />
+        <scenery />
+        <alias>candy</alias>
       </object>
     </object>
     <exit name="Classroom Door" alias="Classroom Door" to="Hall">
@@ -194,6 +203,7 @@
       <runscript type="boolean">false</runscript>
       <lockmessage>Leaving with the teacher still lecturing is probably not a good idea</lockmessage>
       <message>The chaos in the classroom was the best opportunity for an escape. You stood up and left as soon as nobody was looking.</message>
+      <scenery />
     </exit>
     <object name="player">
       <inherit name="editor_object" />
@@ -205,6 +215,10 @@
       <prefix type="string"></prefix>
       <suffix type="string"></suffix>
       <alias>Ms Harrison</alias>
+      <inventoryverbs type="stringlist" />
+      <displayverbs type="stringlist">
+        <value>Look at</value>
+      </displayverbs>
       <look type="script">
         if (Sally.Allergy = false) {
           msg ("The teacher is writing on the blackboard, but trying to leave the Classroom right now would be a death sentence. I need a way to properly distract them.")
@@ -213,10 +227,11 @@
           msg ("Ms. Harrison is really busy with Sally.")
         }
       </look>
+      <scenery />
     </object>
     <object name="Window">
       <inherit name="editor_object" />
-      <scenery type="boolean">false</scenery>
+      <scenery />
       <usedefaultprefix />
       <look>Such a beautiful day outside, sadly you won't experience any of it</look>
       <displayverbs type="stringlist">
@@ -226,41 +241,47 @@
   </object>
   <object name="Hall">
     <inherit name="editor_room" />
-    <description>There are several doors along the sides of the hallway, but the two that stand out are the door to the Janitor’s Room and the door to the Bathroom. There’s also a small vent on the side of the hallway which seems to lead outside of the school.</description>
-    <exit alias="Classroom Door" to="Classroom" />
-    <exit name="Janitor Room" alias="Janitor's Room Door" to="Janitors Closet">
+    <description>There are several doors along the sides of the hallway, one is the classroom door, but the other two that stands out are the door to the Janitor’s Room and the door to the Bathroom. There’s also a small vent on the side of the hallway which seems to lead outside of the school.</description>
+    <exit alias="Classroom Door" to="Classroom">
+      <scenery />
+    </exit>
+    <exit name="Janitor Exit" alias="Janitor's Door" to="Janitors Closet">
       <locked />
       <runscript type="boolean">false</runscript>
+      <message>You type the code you have memorized, and...*beep*... A green light flashed in your eyes. The door is opened.</message>
       <script type="script">
       </script>
-      <message>You type the code you have memorized, and...*beep*... A green light flashed in your eyes. The door is opened.</message>
+      <lockmessage>The Janitor's closet is locked behind a door with a digital lock. The door can be unlocked with a sort of code.</lockmessage>
+      <scenery />
     </exit>
-    <exit alias="Bathroom Door" to="Bathroom" />
+    <exit alias="Bathroom Door" to="Bathroom">
+      <scenery />
+    </exit>
     <exit name="Vent Escape" alias="Vent" to="Vent">
       <locked />
       <runscript type="boolean">false</runscript>
+      <lockmessage>A Vent that is attached to the wall with several screws. You can feel the outside breeze coming out of it. The grid is being held by 10 screws.</lockmessage>
+      <scenery />
     </exit>
   </object>
   <object name="Bathroom">
     <inherit name="editor_room" />
-    <description>There isn’t much inside the bathroom, everything is old and stinky. There is a lot of drawing and information in the side {object:Wall}, but I can’t figure it out from this far away.</description>
+    <description>There isn’t much inside the bathroom, everything is old and stinky. There is a lot of drawing and information in the side wall, but I can’t figure it out from this far away.</description>
     <usedefaultprefix />
-    <exit alias="Hallway" to="Hall" />
+    <exit alias="Hallway" to="Hall">
+      <scenery />
+    </exit>
     <object name="Wall">
       <inherit name="editor_object" />
       <displayverbs type="stringlist">
         <value>Look at</value>
       </displayverbs>
       <drop type="boolean">false</drop>
-      <look>Among many weird drawings and messages you see a {object:DigitNumber} that, weird enough, gives you the feeling that it could be a code for something.</look>
+      <look>Among many weird drawings and messages you see a 4 digit number, that weird enough, gives you the feeling that it could be a code for something.</look>
       <scenery />
     </object>
     <object name="DigitNumber">
       <inherit name="editor_object" />
-      <look type="script">
-        msg ("“The code is 0290. Maybe it will be useful somewhere?”")
-        UnlockExit (Janitor Room)
-      </look>
       <alias>4-Digit Number</alias>
       <drop type="boolean">false</drop>
       <displayverbs type="stringlist">
@@ -269,12 +290,27 @@
       <useindividualverblist type="boolean">false</useindividualverblist>
       <scenery />
       <feature_usegive />
+      <look type="script">
+        msg ("“The code is 0290. Maybe it will be useful somewhere?” The code was memorized by your not so smart brain.")
+        AddToInventory (DigitNumber)
+      </look>
+      <use type="script">
+        if (game.pov.parent = Hall) {
+          msg ("You type code and the door is now unlocked.")
+          UnlockExit (Janitor Exit)
+        }
+        else {
+          msg ("You are far from the door.")
+        }
+      </use>
     </object>
   </object>
   <object name="Janitors Closet">
     <inherit name="editor_room" />
-    <description>The Janitors closet is filled with tools and cleaning supplies to maintain the school. You notice a big {object:ToolBox} and wonder if there is anything that could help you escape the school.</description>
-    <exit alias="Hallway" to="Hall" />
+    <description>The Janitors closet is filled with tools and cleaning supplies to maintain the school. You notice a big ToolBox and wonder if there is anything that could help you escape the school.</description>
+    <exit alias="Hallway" to="Hall">
+      <scenery />
+    </exit>
     <object name="ToolBox">
       <inherit name="editor_object" />
       <inherit name="openable" />
@@ -282,9 +318,6 @@
       <usedefaultprefix type="boolean">false</usedefaultprefix>
       <feature_container />
       <close type="boolean">false</close>
-      <openscript type="script">
-        msg ("“You open the toolbox and see a {object:Screwdriver}”")
-      </openscript>
       <displayverbs type="stringlist">
         <value>Look at</value>
       </displayverbs>
@@ -292,6 +325,9 @@
       <useindividualverblist type="boolean">false</useindividualverblist>
       <usestandardverblist type="boolean">false</usestandardverblist>
       <open />
+      <openscript type="script">
+        msg ("“You open the toolbox and see a screwdriver”")
+      </openscript>
     </object>
     <object name="Screwdriver">
       <inherit name="editor_object" />
@@ -303,17 +339,17 @@
       <take />
       <takemsg>You’ve picked up the screwdriver.”</takemsg>
       <drop type="boolean">false</drop>
-      <givesingle type="script">
-      </givesingle>
+      <givesingle type="boolean">false</givesingle>
       <use type="script">
         if (game.pov.parent = Hall) {
           UnlockExit (Vent Escape)
-          msg ("Vent Unlocked")
+          msg ("You uncrew all 10 screws of the vent, and slowly brought the grid to the ground. Now the vent is open.")
         }
         else {
-          msg ("You are not close to the vent")
+          msg ("You are not close to the vent.")
         }
       </use>
+      <usemenuprompt>Use where?</usemenuprompt>
     </object>
   </object>
   <verb>
@@ -334,7 +370,7 @@
   <object name="Vent">
     <inherit name="editor_room" />
     <description type="script">
-      msg ("You moved through the vents, you almost got lost. But at the end you saw the light at the end and escaped school.")
+      msg ("You got into the vent, the dusty enviroment made everything harder, but after some struggle you saw the light at the end. Freedom was achieved!")
       finish
     </description>
   </object>
