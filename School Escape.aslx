@@ -42,7 +42,7 @@
       <displayverbs type="stringlist">
         <value>Look at</value>
       </displayverbs>
-      <scenery />
+      <scenery type="boolean">false</scenery>
       <speak type="script">
         if (Sally.Allergy = false) {
           msg ("\"Escape? Well, you might want to find some way to distract the teacher first. Maybe you could handle that goody two shoes Sally\"")
@@ -63,7 +63,7 @@
       <look><![CDATA[Sally, who always tells on the other students for cheating or trying to escape from class. She is currently eating a lot of candy, which was rewarded to her by the teacher for telling on others.<br/>Weird enough she was a backpack halfway opened that cointains something shiny sticking out.]]></look>
       <Allergy type="boolean">false</Allergy>
       <feature_usegive />
-      <scenery />
+      <scenery type="boolean">false</scenery>
       <speak type="script">
         if (Sally.Allergy = false) {
           msg ("\"Why would I want to do that? If you try to do that I'll tell the teacher and you'll spend all of lunch in detention. *evil laugh*\"")
@@ -98,7 +98,7 @@
         </displayverbs>
         <contentsprefix type="string"></contentsprefix>
         <feature_usegive />
-        <scenery />
+        <scenery type="boolean">false</scenery>
         <addscript type="script">
         </addscript>
         <put type="scriptdictionary">
@@ -132,6 +132,7 @@
           <displayverbs type="stringlist">
             <value>Look at</value>
           </displayverbs>
+          <usedefaultprefix type="boolean">false</usedefaultprefix>
         </object>
         <object name="Binder">
           <inherit name="editor_object" />
@@ -139,6 +140,7 @@
           <displayverbs type="stringlist">
             <value>Look at</value>
           </displayverbs>
+          <usedefaultprefix type="boolean">false</usedefaultprefix>
         </object>
         <object name="Candy">
           <inherit name="editor_object" />
@@ -146,6 +148,7 @@
           <displayverbs type="stringlist">
             <value>Look at</value>
           </displayverbs>
+          <usedefaultprefix type="boolean">false</usedefaultprefix>
         </object>
       </object>
     </object>
@@ -153,7 +156,7 @@
       <inherit name="editor_object" />
       <inherit name="namedmale" />
       <look>Paul, the Class Clown. It’s a wonder that his last prank didn’t get him kicked out of class. Maybe he can help you escape? Paul is obviously not paying attention to what the teacher is saying. </look>
-      <scenery />
+      <scenery type="boolean">false</scenery>
       <speak type="script">
         if (Sally.Allergy = false) {
           msg ("\"Sorry man, I don’t have any ideas on how you could escape. Maybe ask that John guy if you haven’t already heard he’s real smart.\"")
@@ -177,7 +180,7 @@
         <value>Look at</value>
       </displayverbs>
       <look>Your desk. There’s nothing really interesting on the top of the desk. Just a bunch of scribbled notes, and some obscene drawings that I don’t need to get into much detail. While inspecting the table, you look under it to find a Wad of Gum and a Butterfinger Bar.</look>
-      <scenery />
+      <scenery type="boolean">false</scenery>
       <alt type="stringlist">
         <value>table</value>
       </alt>
@@ -188,7 +191,7 @@
         <displayverbs type="stringlist">
           <value>Look at</value>
         </displayverbs>
-        <scenery />
+        <scenery type="boolean">false</scenery>
         <alias>Wad of Gum</alias>
         <alt type="stringlist">
           <value>gum</value>
@@ -208,7 +211,7 @@
         <givemenuprompt>To who do you want to give this delicious candy?</givemenuprompt>
         <use type="boolean">false</use>
         <givesingle />
-        <scenery />
+        <scenery type="boolean">false</scenery>
         <alias>Butterfinger Bar</alias>
         <selfuseanything type="script">
         </selfuseanything>
@@ -243,7 +246,7 @@
       <displayverbs type="stringlist">
         <value>Look at</value>
       </displayverbs>
-      <scenery />
+      <scenery type="boolean">false</scenery>
       <look type="script">
         if (Sally.Allergy = false) {
           msg ("The teacher is writing on the blackboard, but trying to leave the Classroom right now would be a death sentence. I need a way to properly distract them.")
@@ -263,7 +266,7 @@
     </object>
     <object name="Window">
       <inherit name="editor_object" />
-      <scenery />
+      <scenery type="boolean">false</scenery>
       <usedefaultprefix />
       <look>Such a beautiful day outside, sadly you won't experience any of it</look>
       <displayverbs type="stringlist">
@@ -301,7 +304,7 @@
     <description>There isn’t much inside the bathroom, everything is old and stinky. The smell is so strong that you wanted to go back to the hallway. There is a lot of drawing and information in the side wall, but I can’t figure it out from this far away. </description>
     <usedefaultprefix />
     <exit alias="Hallway" to="Hall">
-      <scenery />
+      <scenery type="boolean">false</scenery>
     </exit>
     <object name="Wall">
       <inherit name="editor_object" />
@@ -310,7 +313,7 @@
       </displayverbs>
       <drop type="boolean">false</drop>
       <look>Among many weird drawings and messages you see a 4 digit number, that weird enough, gives you the feeling that it could be a code for something.</look>
-      <scenery />
+      <scenery type="boolean">false</scenery>
       <alt type="stringlist">
         <value>side wall</value>
         <value>wall</value>
@@ -324,7 +327,7 @@
         <value>Look at</value>
       </displayverbs>
       <useindividualverblist type="boolean">false</useindividualverblist>
-      <scenery />
+      <scenery type="boolean">false</scenery>
       <feature_usegive />
       <look type="script">
         msg ("“The code is 0290. Maybe it will be useful somewhere?” The code was memorized by your not so smart brain.")
@@ -354,7 +357,7 @@
     <inherit name="editor_room" />
     <description>The Janitors closet is filled with tools and cleaning supplies to maintain the school. You notice a big ToolBox and wonder if there is anything that could help you escape the school.</description>
     <exit alias="Hallway" to="Hall">
-      <scenery />
+      <scenery type="boolean">false</scenery>
     </exit>
     <object name="ToolBox">
       <inherit name="editor_object" />
@@ -366,7 +369,7 @@
       <displayverbs type="stringlist">
         <value>Look at</value>
       </displayverbs>
-      <scenery />
+      <scenery type="boolean">false</scenery>
       <useindividualverblist type="boolean">false</useindividualverblist>
       <usestandardverblist type="boolean">false</usestandardverblist>
       <open />
@@ -384,7 +387,7 @@
       <feature_usegive />
       <attr name="feature_container" type="boolean">false</attr>
       <attr name="feature_switchable" type="boolean">false</attr>
-      <scenery />
+      <scenery type="boolean">false</scenery>
       <take />
       <takemsg>You’ve picked up the screwdriver.”</takemsg>
       <drop type="boolean">false</drop>
