@@ -1,0 +1,6 @@
+[0204/191947:ERROR:renderer_main.cc(207)] Running without renderer sandbox
+[0204/191948:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[0204/191948:ERROR:cache_util.cc(132)] Unable to move cache folder C:\Users\jonat\AppData\Local\Temp\GPUCache to C:\Users\jonat\AppData\Local\Temp\old_GPUCache_000
+[0204/191948:ERROR:cache_creator.cc(132)] Unable to create cache
+[0204/191948:ERROR:shader_disk_cache.cc(588)] Shader Cache Creation failed: -2
+[0204/191954:WARNING:message_in_transit_queue.cc(18)] Destroying nonempty message queue
