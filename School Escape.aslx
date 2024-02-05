@@ -298,7 +298,7 @@
   </object>
   <object name="Bathroom">
     <inherit name="editor_room" />
-    <description>There isn’t much inside the bathroom, everything is old and stinky. There is a lot of drawing and information in the side wall, but I can’t figure it out from this far away.</description>
+    <description>There isn’t much inside the bathroom, everything is old and stinky. The smell is so strong that you wanted to go back to the hallway. There is a lot of drawing and information in the side wall, but I can’t figure it out from this far away. </description>
     <usedefaultprefix />
     <exit alias="Hallway" to="Hall">
       <scenery />
@@ -345,6 +345,9 @@
         <value>4 digit number</value>
         <value>numbers</value>
       </alt>
+      <inventoryverbs type="stringlist">
+        <value>Use</value>
+      </inventoryverbs>
     </object>
   </object>
   <object name="Janitors Closet">
@@ -396,6 +399,9 @@
           msg ("You are not close to the vent.")
         }
       </use>
+      <inventoryverbs type="stringlist">
+        <value>Use</value>
+      </inventoryverbs>
     </object>
   </object>
   <verb>
@@ -407,11 +413,6 @@
     <property>put</property>
     <pattern>put</pattern>
     <defaultexpression>"You can't put " + object.article + "."</defaultexpression>
-  </verb>
-  <verb>
-    <property type="string"></property>
-    <pattern type="simplepattern"></pattern>
-    <defaultexpression>"You can't  " + object.article + "."</defaultexpression>
   </verb>
   <object name="Vent">
     <inherit name="editor_room" />

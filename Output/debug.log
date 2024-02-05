@@ -25,3 +25,9 @@
 [0204/221950:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
 [0204/221955:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
 [0204/221957:WARNING:message_in_transit_queue.cc(18)] Destroying nonempty message queue
+[0205/114004:ERROR:renderer_main.cc(207)] Running without renderer sandbox
+[0205/114005:ERROR:cache_util_win.cc(20)] Unable to move the cache: 5
+[0205/114005:ERROR:cache_util.cc(132)] Unable to move cache folder C:\Users\jonat\AppData\Local\Temp\GPUCache to C:\Users\jonat\AppData\Local\Temp\old_GPUCache_000
+[0205/114005:ERROR:cache_creator.cc(132)] Unable to create cache
+[0205/114005:ERROR:shader_disk_cache.cc(588)] Shader Cache Creation failed: -2
+[0205/114043:WARNING:message_in_transit_queue.cc(18)] Destroying nonempty message queue
